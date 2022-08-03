@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AppService } from './app.service';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { UsersComponent } from './users.component';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +24,7 @@ export class AppComponent implements OnDestroy {
 
   users: any[] = [];
   userCount = 0;
-
+  
   destroy$: Subject<boolean> = new Subject<boolean>();
 
   onSubmit() {
@@ -39,6 +40,7 @@ export class AppComponent implements OnDestroy {
   getAllUsers() {
     this.appService.getUsers().pipe(takeUntil(this.destroy$)).subscribe((users: any[]) => {
         this.users = users;
+        this.userCount = users.length;
     });
   }
 
