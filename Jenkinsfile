@@ -5,7 +5,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 echo 'Checking out...'
-                git url: 'https://ruialvespinto@bitbucket.org/luisnogueira/nodejs_angular_demo.git'
+                git url: 'https://github.com/ruialvespinto/nodejs_angular_demo.git'
             }
         }
         stage('Build') {
